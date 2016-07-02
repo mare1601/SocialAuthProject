@@ -1,0 +1,11 @@
+{% if user and not user.is_anonymous %}
+
+  <a>HEYHEY, {{ user.first_name }}! -Hugs from Mary</a>
+  <br>
+  <a href="/logout">Logout</a>
+  {% block content %}
+    <h1> Default content </h1>
+  {% endblock %}
+{% else %}
+  <a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google!</a>
+{% endif %}
