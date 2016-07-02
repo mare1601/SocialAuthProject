@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^home/$', 'django_social_app.views.home'),
     url(r'^logout/$', 'django_social_app.views.logout'),
     url(r'^chats/', include('social.apps.django_app.urls')),
-    
+    url(r'^$', views.index, name='index'),
+    url(r'^(?P\d+)/$', views.chat_room, name='chat_room'),
 
 ]
