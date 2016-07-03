@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_social_project',
     'social.apps.django_app.default',
+    'django_social_app',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -113,7 +114,6 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_EMAILS = ['mary.e.ellis@gmail.com', 'lisamlauck@gmail.com', 'roxila@gmail.com']
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/

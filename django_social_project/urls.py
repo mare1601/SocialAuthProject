@@ -15,17 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.conf.urls import include
 
+from django.conf.urls import include
+from django_social_app import views as social_views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url('', include('social.apps.django_app.urls', namespace='social')),
-    url(r'^$', 'django_social_app.views.login'),
-    url(r'^home/$', 'django_social_app.views.home'),
-    url(r'^logout/$', 'django_social_app.views.logout'),
-    url(r'^chats/', include('social.apps.django_app.urls')),
-    url(r'^$', views.index, name='index'),
-    url(r'^(?P\d+)/$', views.chat_room, name='chat_room'),
+    url(r'^$', social_views.login),
+    url(r'^home/$', social_views.home),
+    url(r'^logout/$', social_views.logout),
+    url(r'^chats/', social_views.index, name='index'),
+    url(r'^(?P<chat_room_id>\d+)/$', social_views.chat_room, name='chat_room'),
+    url(r'^long_poll/(?P<chat_room_id>\d+)/$', social_views.longpoll_chat_room, name='longpoll_chat_room'),
 
 ]
