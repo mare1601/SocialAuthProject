@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include
+from django_social_app import views
 
 
 urlpatterns = [
@@ -25,6 +26,7 @@ urlpatterns = [
     url(r'^home/$', 'django_social_app.views.home'),
     url(r'^logout/$', 'django_social_app.views.logout'),
     url(r'^chats/', include('social.apps.django_app.urls')),
-    
+    url(r'^(?P<label>[\w-]{,50})/$', views.chat_room, name='chat_room'),
+
 
 ]

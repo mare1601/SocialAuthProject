@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_social_project',
     'social.apps.django_app.default',
+    'channels',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -115,6 +116,15 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_EMAILS = ['mary.e.ellis@gmail.com', 'lisamlauck@gmail.com', 'roxila@gmail.com']
 
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+        },
+        "ROUTING": "chat.routing.channel_routing",
+    },
+}
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
